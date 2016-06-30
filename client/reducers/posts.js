@@ -1,8 +1,16 @@
 function posts(state = [], action) {
-
-    console.log(state, action);
-    console.log("The post will change");
-
-    return state;
+    switch (action.type) {
+        case 'INCREMENT_TYPE':
+            const i = action.indexOf;
+            return [
+                ...state.slice(0, i),
+                {...state[i], likes: state[i].likes + 1},
+                ...state.slice(i + 1)
+            ];
+            break;
+        default:
+            return state;
+            break;
+    }
 }
 export default posts;
